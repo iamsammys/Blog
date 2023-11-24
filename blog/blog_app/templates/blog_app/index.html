@@ -1,0 +1,16 @@
+{% extends 'blog_app/base.html' %}
+{% load static %}
+{% block content %}
+    {% for posts in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ posts.author }}</a>
+                <small class="text-muted">{{ posts.created_at | date }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'blog_app:post-detail' posts.pk %}">{{ posts.title }}</a></h2>
+            <p class="article-content">{{ posts.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
